@@ -1,7 +1,8 @@
 # 개요
 * kubernetse ephemeral storage를 잘못사용하도 노드 장애가 발생화는 상황을 재현
 
-# 에러 로그
+# 첫번째 테스트의 로그
+* control-plane에서 테스트 진행
 
 ## pod 상태
 
@@ -51,3 +52,9 @@ Warning  EvictionThresholdMet     3m43s (x3 over 5m3s)   kubelet          Attemp
   Normal   NodeHasDiskPressure      2m56s (x3 over 4m57s)  kubelet          Node ephemeral-practice-control-plane status is now: NodeHasDiskPressure
   Normal   RegisteredNode           2m34s                  node-controller  Node ephemeral-practice-control-plane event: Registered Node ephemeral-practice-control-plane in Controller
 ```
+
+# 두번째 워커노드에서 테스트 진행
+
+* controlplane에서 잠시 node not ready상태 점검이 보임
+
+![](./imgs/node_notready.png)

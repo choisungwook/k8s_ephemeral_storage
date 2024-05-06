@@ -9,3 +9,7 @@ nodes:
     kind: KubeletConfiguration
     evictionHard:
       nodefs.available: "1Gi"
+- role: worker
+  image: kindest/node:v1.29.1
+  labels:
+    env: test

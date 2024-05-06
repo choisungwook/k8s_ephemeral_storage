@@ -12,6 +12,8 @@ spec:
       labels:
         app: stress
     spec:
+      nodeSelector:
+        env: test
       containers:
       - name: busybox
         image: busybox
