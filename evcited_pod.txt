@@ -1,0 +1,49 @@
+Name:             stress-6bd4c7bb6d-5dztb
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             ephemeral-practice-control-plane/
+Start Time:       Mon, 06 May 2024 23:09:09 +0900
+Labels:           app=stress
+                  pod-template-hash=6bd4c7bb6d
+Annotations:      <none>
+Status:           Failed
+Reason:           Evicted
+Message:          Pod was rejected: The node had condition: [DiskPressure]. 
+IP:               
+IPs:              <none>
+Controlled By:    ReplicaSet/stress-6bd4c7bb6d
+Containers:
+  busybox:
+    Image:      busybox
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      /bin/sh
+    Args:
+      -c
+      while true; do fallocate -l 50G /test/testfile; done
+    Environment:  <none>
+    Mounts:
+      /test from test-storage (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-fjccj (ro)
+Volumes:
+  test-storage:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  kube-api-access-fjccj:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason     Age   From               Message
+  ----     ------     ----  ----               -------
+  Normal   Scheduled  100s  default-scheduler  Successfully assigned default/stress-6bd4c7bb6d-5dztb to ephemeral-practice-control-plane
+  Warning  Evicted    100s  kubelet            The node had condition: [DiskPressure].

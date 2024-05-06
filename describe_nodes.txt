@@ -1,0 +1,88 @@
+Name:               ephemeral-practice-control-plane
+Roles:              control-plane
+Labels:             beta.kubernetes.io/arch=arm64
+                    beta.kubernetes.io/os=linux
+                    kubernetes.io/arch=arm64
+                    kubernetes.io/hostname=ephemeral-practice-control-plane
+                    kubernetes.io/os=linux
+                    node-role.kubernetes.io/control-plane=
+Annotations:        kubeadm.alpha.kubernetes.io/cri-socket: unix:///run/containerd/containerd.sock
+                    node.alpha.kubernetes.io/ttl: 0
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Mon, 06 May 2024 22:55:04 +0900
+Taints:             node.kubernetes.io/disk-pressure:NoSchedule
+Unschedulable:      false
+Lease:
+  HolderIdentity:  ephemeral-practice-control-plane
+  AcquireTime:     <unset>
+  RenewTime:       Mon, 06 May 2024 23:10:21 +0900
+Conditions:
+  Type             Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----             ------  -----------------                 ------------------                ------                       -------
+  MemoryPressure   False   Mon, 06 May 2024 23:08:41 +0900   Mon, 06 May 2024 22:55:03 +0900   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure     True    Mon, 06 May 2024 23:08:41 +0900   Mon, 06 May 2024 23:08:41 +0900   KubeletHasDiskPressure       kubelet has disk pressure
+  PIDPressure      False   Mon, 06 May 2024 23:08:41 +0900   Mon, 06 May 2024 22:55:03 +0900   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready            True    Mon, 06 May 2024 23:08:41 +0900   Mon, 06 May 2024 22:55:22 +0900   KubeletReady                 kubelet is posting ready status
+Addresses:
+  InternalIP:  172.18.0.2
+  Hostname:    ephemeral-practice-control-plane
+Capacity:
+  cpu:                8
+  ephemeral-storage:  32846608Ki
+  memory:             8034972Ki
+  pods:               110
+Allocatable:
+  cpu:                8
+  ephemeral-storage:  31798032Ki
+  memory:             8034972Ki
+  pods:               110
+System Info:
+  Machine ID:                 b2b358f32cba4caeaa6d24e8d0b38de5
+  System UUID:                b2b358f32cba4caeaa6d24e8d0b38de5
+  Boot ID:                    ad66702e-e678-4af1-9b52-75b97b779a2e
+  Kernel Version:             6.5.11-linuxkit
+  OS Image:                   Debian GNU/Linux 12 (bookworm)
+  Operating System:           linux
+  Architecture:               arm64
+  Container Runtime Version:  containerd://1.7.13
+  Kubelet Version:            v1.29.1
+  Kube-Proxy Version:         v1.29.1
+PodCIDR:                      10.244.0.0/24
+PodCIDRs:                     10.244.0.0/24
+ProviderID:                   kind://docker/ephemeral-practice/ephemeral-practice-control-plane
+Non-terminated Pods:          (11 in total)
+  Namespace                   Name                                                        CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                                        ------------  ----------  ---------------  -------------  ---
+  default                     busybox-deployment-fb457dcb5-75bvf                          50m (0%)      50m (0%)    64Mi (0%)        64Mi (0%)      14m
+  default                     busybox-deployment-fb457dcb5-jxmgd                          50m (0%)      50m (0%)    64Mi (0%)        64Mi (0%)      14m
+  default                     busybox-deployment-fb457dcb5-m596g                          50m (0%)      50m (0%)    64Mi (0%)        64Mi (0%)      14m
+  default                     busybox-deployment-fb457dcb5-mks2n                          50m (0%)      50m (0%)    64Mi (0%)        64Mi (0%)      14m
+  kube-system                 coredns-76f75df574-8vwq6                                    100m (1%)     0 (0%)      70Mi (0%)        170Mi (2%)     15m
+  kube-system                 coredns-76f75df574-nxblf                                    100m (1%)     0 (0%)      70Mi (0%)        170Mi (2%)     15m
+  kube-system                 etcd-ephemeral-practice-control-plane                       100m (1%)     0 (0%)      100Mi (1%)       0 (0%)         15m
+  kube-system                 kube-apiserver-ephemeral-practice-control-plane             250m (3%)     0 (0%)      0 (0%)           0 (0%)         15m
+  kube-system                 kube-controller-manager-ephemeral-practice-control-plane    200m (2%)     0 (0%)      0 (0%)           0 (0%)         15m
+  kube-system                 kube-proxy-kppbv                                            0 (0%)        0 (0%)      0 (0%)           0 (0%)         15m
+  kube-system                 kube-scheduler-ephemeral-practice-control-plane             100m (1%)     0 (0%)      0 (0%)           0 (0%)         15m
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests     Limits
+  --------           --------     ------
+  cpu                1050m (13%)  200m (2%)
+  memory             496Mi (6%)   596Mi (7%)
+  ephemeral-storage  0 (0%)       0 (0%)
+Events:
+  Type     Reason                   Age                   From             Message
+  ----     ------                   ----                  ----             -------
+  Normal   Starting                 15m                   kube-proxy       
+  Normal   Starting                 15m                   kubelet          Starting kubelet.
+  Normal   NodeAllocatableEnforced  15m                   kubelet          Updated Node Allocatable limit across pods
+  Normal   NodeHasSufficientMemory  15m                   kubelet          Node ephemeral-practice-control-plane status is now: NodeHasSufficientMemory
+  Normal   NodeHasSufficientPID     15m                   kubelet          Node ephemeral-practice-control-plane status is now: NodeHasSufficientPID
+  Normal   RegisteredNode           15m                   node-controller  Node ephemeral-practice-control-plane event: Registered Node ephemeral-practice-control-plane in Controller
+  Normal   NodeReady                15m                   kubelet          Node ephemeral-practice-control-plane status is now: NodeReady
+  Normal   RegisteredNode           7m35s                 node-controller  Node ephemeral-practice-control-plane event: Registered Node ephemeral-practice-control-plane in Controller
+  Normal   NodeHasNoDiskPressure    3m41s (x2 over 15m)   kubelet          Node ephemeral-practice-control-plane status is now: NodeHasNoDiskPressure
+  Warning  EvictionThresholdMet     3m (x5 over 10m)      kubelet          Attempting to reclaim ephemeral-storage
+  Normal   NodeHasDiskPressure      101s (x7 over 9m58s)  kubelet          Node ephemeral-practice-control-plane status is now: NodeHasDiskPressure
+  Normal   RegisteredNode           73s                   node-controller  Node ephemeral-practice-control-plane event: Registered Node ephemeral-practice-control-plane in Controller

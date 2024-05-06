@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stress
+  template:
+    metadata:
+      labels:
+        app: stress
+    spec:
+      containers:
+      - name: busybox
+        image: busybox
+        command: ["/bin/sh"]
+        # args: ["-c", "while true;do dd if=/dev/zero of=/test/testfile bs=10G count=10;done"]
+        args: ["-c", "while true; do fallocate -l 50G /test/testfile; done"]
+        volumeMounts:
+        - name: test-storage
+          mountPath: /test
+      volumes:
+      - name: test-storage
+        emptyDir: {}
