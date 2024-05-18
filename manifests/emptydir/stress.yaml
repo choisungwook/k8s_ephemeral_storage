@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emptydir-stress
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: emptydir-stress
+  template:
+    metadata:
+      labels:
+        app: emptydir-stress
+    spec:
+      nodeSelector:
+        env: test
+      containers:
+      - name: fill-disk-container
+        image: busybox
+        command: ["/bin/sh", "-c"]
+        args:
+        - >
+          i=0; while true; do
+            dd if=/dev/zero of=/data/file$i bs=10M count=1024;
+            i=$((i+1));
+          done;
+        volumeMounts:
+        - mountPath: /data
+          name: temp-storage
+      volumes:
+      - name: temp-storage
+        emptyDir: {}
