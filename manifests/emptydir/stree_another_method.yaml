@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: stress
+  name: stress-fallocate
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: stress
+      app: stress-fallocate
   template:
     metadata:
       labels:
-        app: stress
+        app: stress-fallocate
     spec:
       nodeSelector:
         env: test
