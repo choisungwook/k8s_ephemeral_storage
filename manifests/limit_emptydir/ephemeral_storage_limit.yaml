@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ephemeral-storage-limit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ephemeral-storage-limit
+  template:
+    metadata:
+      labels:
+        app: ephemeral-storage-limit
+    spec:
+      nodeSelector:
+        env: test
+      containers:
+      - name: fill-disk-container
+        image: busybox
+        command: ["/bin/sh", "-c"]
+        args:
+        - >
+          i=0; while true; do
+            echo "iteration $i";
+            dd if=/dev/zero of=/file$i bs=10M count=1024;
+            i=$((i+1));
+          done;
+        resources:
+          requests:
+            ephemeral-storage: "500Mi"
+          limits:
+            ephemeral-storage: "1Gi"
