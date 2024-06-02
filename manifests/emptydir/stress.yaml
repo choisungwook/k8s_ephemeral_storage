@@ -21,6 +21,7 @@ spec:
         args:
         - >
           i=0; while true; do
+            echo "iteration $i";
             dd if=/dev/zero of=/data/file$i bs=10M count=1024;
             i=$((i+1));
           done;

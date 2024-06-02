@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: busybox-deployment
+  name: emptydir-example1
 spec:
-  replicas: 4
+  replicas: 1
   selector:
     matchLabels:
-      app: busybox
+      app: emptydir-example1
   template:
     metadata:
       labels:
-        app: busybox
+        app: emptydir-example1
     spec:
       nodeSelector:
         env: test
       containers:
-      - name: busybox
+      - name: emptydir-example1
         image: busybox
         command: ["sleep", "infinity"]
         resources:
@@ -25,3 +25,9 @@ spec:
           requests:
             cpu: "50m"
             memory: "64Mi"
+        volumeMounts:
+        - mountPath: /data
+          name: temp-storage
+      volumes:
+      - name: temp-storage
+        emptyDir: {}

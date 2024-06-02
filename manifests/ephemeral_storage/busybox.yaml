@@ -8,6 +8,8 @@ spec:
     matchLabels:
       app: busybox
   template:
+    nodeSelector:
+      env: test
     metadata:
       labels:
         app: busybox
