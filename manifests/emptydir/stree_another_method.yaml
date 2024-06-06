@@ -18,8 +18,7 @@ spec:
       - name: busybox
         image: busybox
         command: ["/bin/sh"]
-        # args: ["-c", "while true;do dd if=/dev/zero of=/test/testfile bs=10G count=10;done"]
-        args: ["-c", "while true; do fallocate -l 50G /test/testfile; done"]
+        args: ["-c", "while true;do dd if=/dev/zero of=/test/testfile bs=10G count=10;done"]
         volumeMounts:
         - name: test-storage
           mountPath: /test
